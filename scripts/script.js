@@ -5,6 +5,7 @@ let Point = {
     
 }
 let TilesPosition = {}
+var OldPosition = []
 
 function getKeyByValue(object, value) {
     for (let key in object) {
@@ -20,11 +21,36 @@ function getKeyByValue(object, value) {
 }
 
 function changeColor(position) {
-    let classNameOfTile = getKeyByValue(TilesPosition, position);
-    console.log(document.getElementsByClassName(classNameOfTile)[0].style.background = "yellow");
 
-    position[0] = 
-    classNameOfTile = getKeyByValue(TilesPosition, );
+    for (let i in OldPosition) {
+        if (OldPosition[i] !== undefined) {
+            document.getElementsByClassName(getKeyByValue(TilesPosition, OldPosition[i]))[0].style.background = "#f4f4f4";
+        }
+    }
+
+    OldPosition = []
+
+    OldPosition.push([...position])
+    document.getElementsByClassName(getKeyByValue(TilesPosition, position))[0].style.background = "yellow";
+
+    position[0] = position[0] + 1
+    document.getElementsByClassName(getKeyByValue(TilesPosition, position))[0].style.background = "yellow";
+    OldPosition.push([...position])
+    
+    position[0] = position[0] - 1
+    position[1] = position[1] + 1;
+    OldPosition.push([...position])
+    document.getElementsByClassName(getKeyByValue(TilesPosition, position))[0].style.background = "yellow";
+
+    position[0] = position[0] - 1
+    position[1] = position[1] - 1;
+    OldPosition.push([...position])
+    document.getElementsByClassName(getKeyByValue(TilesPosition, position))[0].style.background = "yellow";
+
+    position[0] = position[0] + 1
+    position[1] = position[1] - 1;
+    OldPosition.push([...position])
+    document.getElementsByClassName(getKeyByValue(TilesPosition, position))[0].style.background = "yellow";
 }
 
 function changePosition(position, target) {
