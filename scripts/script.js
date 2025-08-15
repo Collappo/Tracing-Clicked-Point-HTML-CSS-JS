@@ -23,7 +23,7 @@ function getKeyByValue(object, value) {
 function changeColor(position) {
 
     for (let i in OldPosition) {
-        if (OldPosition[i] !== undefined) {
+        if (OldPosition[i] !== undefined && OldPosition[i][0] >= 0 && OldPosition[i][1] >= 0 && OldPosition[i][0] < 10 && OldPosition[i][1] < 10) {
             document.getElementsByClassName(getKeyByValue(TilesPosition, OldPosition[i]))[0].style.background = "#f4f4f4";
         }
     }
