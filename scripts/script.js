@@ -7,21 +7,28 @@ let Point = {
 let TilesPosition = {}
 
 function getKeyByValue(object, value) {
-    console.log(object, value)
     for (let key in object) {
-
-        if (object[key] === value) {
-            console.log("EEE")
-            return key
+        if (Array.isArray(object[key]) && Array.isArray(value)) {
+            if (object[key].length === value.length && object[key].every((v, i) => v === value[i])) {
+                return key;
+            }
+        } else if (object[key] === value) {
+            return key;
         }
     }
+    return null;
 }
 
 function changeColor(position) {
-    TilesPosition
+    let classNameOfTile = getKeyByValue(TilesPosition, position);
+    console.log(document.getElementsByClassName(classNameOfTile)[0].style.background = "yellow");
+
+    position[0] = 
+    classNameOfTile = getKeyByValue(TilesPosition, );
 }
 
 function changePosition(position, target) {
+    
 
 }
 
