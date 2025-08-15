@@ -54,37 +54,39 @@ function changeColor(position) {
 }
 
 function changePosition(position, target) {
+    
+    if (position[0] < target[0]) {
+        position[0] += 1;
+        console.log(1)
+    }
+
+    else if (position[0] > target[0]) {
+        position[0] -= 1;
+        console.log(2)
+    }
+
+    if (position[1] < target[1]) {
+        console.log(position)
+        position[1] = position[1] + 1;
+        console.log(position)
+        console.log(3)
+    }
+
+    else if (position[1] > target[1]) {
+        position[1] -= 1;
+        console.log(4)
+    }
+
+    position_ = [...position];
+    
+
     if (position.length === target.length && position.every((v, i) => v === target[i])) {
         console.log("Target reached at", position);
         changeColor(position);
         tracked = true;
     }
-    else {
-        if (position[0] < target[0]) {
-            position[0] += 1;
-            console.log(1)
-        }
-
-        else if (position[0] > target[0]) {
-            position[0] -= 1;
-            console.log(2)
-        }
-
-        if (position[1] < target[1]) {
-            position[1] = position[1] + 1;
-            console.log(3)
-        }
-
-        else if (position[1] > target[1]) {
-            position[1] -= 1;
-            console.log(4)
-        }
-
-        position_ = [...position];
-    }
 
     if (tracked === false) {
-        console.log(position_);
         changeColor(position_);
         setTimeout(() => {
             changePosition(position_, target);
@@ -94,6 +96,7 @@ function changePosition(position, target) {
         tracked = false;
     }
 
+    Point.position = position_;
 }
 
 function targetChanged(target = [0, 0]) {
