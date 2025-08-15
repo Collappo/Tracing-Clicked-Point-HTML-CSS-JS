@@ -24,6 +24,7 @@ body {
     background: #f4f4f4;
     margin: 3px;
     border-radius: 10px;
+    transition: 200ms ease-in-out;
 }
 .tile:hover {
     background: #e4e4e4;
