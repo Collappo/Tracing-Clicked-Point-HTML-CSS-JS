@@ -54,8 +54,27 @@ function changeColor(position) {
 }
 
 function changePosition(position, target) {
-    
+    let tracked = false;
+    if (position[0] === target[0] && position[1] === target[1]) {
+        console.log("Target reached at", position);
+    }
+    else {
+        if (position[0] < target[0]) {
+            position[0] += 1;
+        }
 
+        if (position[0] > target[0]) {
+            position[0] -= 1;
+        }
+
+        if (position[1] < target[1]) {
+            position[1] += 1;
+        }
+
+        if (position[1] > target[1]) {
+            position[1] -= 1;
+        }
+    }
 }
 
 function targetChanged(target = [0, 0]) {
@@ -72,4 +91,3 @@ for (let i = 0; i < tiles.length; i++) {
     })
     console.log(i)
 }
-
