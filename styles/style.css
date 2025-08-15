@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    display: grid;
+    height: 600px;
+    width: 600px;
+    border-radius: 15px;
+    background: #e1e1e1;
+    padding: 3px;
+
+    grid-template-columns: repeat(10, calc(600px/10));
+    grid-template-rows: repeat(10, calc(600px/10));
+}
+
+
+
+.tile {
+    background: #f4f4f4;
+    margin: 3px;
+    border-radius: 10px;
+}
+.tile:hover {
+    background: #e4e4e4;
+}
