@@ -1,7 +1,7 @@
 const tiles = document.getElementsByClassName("tile")
-let target
+let target, tracked = false;
 let Point = {
-    position: [0, 0]
+    position: [8, 7]
     
 }
 let TilesPosition = {}
@@ -54,27 +54,46 @@ function changeColor(position) {
 }
 
 function changePosition(position, target) {
-    let tracked = false;
-    if (position[0] === target[0] && position[1] === target[1]) {
+    if (position.length === target.length && position.every((v, i) => v === target[i])) {
         console.log("Target reached at", position);
+        changeColor(position);
+        tracked = true;
     }
     else {
         if (position[0] < target[0]) {
             position[0] += 1;
+            console.log(1)
         }
 
-        if (position[0] > target[0]) {
+        else if (position[0] > target[0]) {
             position[0] -= 1;
+            console.log(2)
         }
 
         if (position[1] < target[1]) {
-            position[1] += 1;
+            position[1] = position[1] + 1;
+            console.log(3)
         }
 
-        if (position[1] > target[1]) {
+        else if (position[1] > target[1]) {
             position[1] -= 1;
+            console.log(4)
         }
+
+        position_ = [...position];
     }
+
+    if (tracked === false) {
+        console.log(position_);
+        changeColor(position_);
+        setTimeout(() => {
+            changePosition(position_, target);
+        }, 1000);
+    }
+    else {
+        tracked = false;
+    }
+
 }
 
 function targetChanged(target = [0, 0]) {
@@ -88,6 +107,7 @@ for (let i = 0; i < tiles.length; i++) {
         target = TilesPosition[tiles[i].classList[1]]
         console.log(tiles[i], target)
         targetChanged(target)
+        tiles[i].style.background = "red";
     })
     console.log(i)
 }
